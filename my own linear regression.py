@@ -30,7 +30,7 @@ def    min_j(data ,min_x, min_y, max_x, max_y):
     max_y = int(max_y)
 
     max_slope = int(math.ceil((abs((max_y - min_y)/(max_x-min_x)))))
-    min_j = data[0,1] 
+    min_j = 100000000 
     per_w = data[0,0]
     per_b = data[0,1]
 
@@ -38,15 +38,18 @@ def    min_j(data ,min_x, min_y, max_x, max_y):
     # print(min_x, min_y, max_x, max_y,max_slope)
     for w in range(-max_slope,max_slope+1):
         for b in range(-max_y,max_y):
+            j=0
             for gh in data:
-                j= abs(w*gh[0]+b - gh[1]) 
-                # print(w,b,j,"\n--------------------------------\n")
-                if j<min_j:
-                    min_j = j
-                    per_w=w
-                    per_b =b
+                j += abs(w*gh[0]+b - gh[1]) 
+            print("w:",w,"b:",b,"j:",j,"\n--------------------------------\n")
+            if j<min_j:
+                min_j = j
+                per_w=w
+                per_b =b
     # print(min_x, min_y, max_x, max_y,max_slope)
+    print("min_j :: ",min_j)
     return min_j,per_w,per_b
+    
 
 def predict_graph(data,w,b):
     j= []
