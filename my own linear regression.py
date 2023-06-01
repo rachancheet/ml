@@ -48,10 +48,10 @@ def    min_j(data ,min_x, min_y, max_x, max_y):
     # print(min_x, min_y, max_x, max_y,max_slope)
     return min_j,per_w,per_b
 
-def fun_j(data,w,b):
-    j= np.array([max_x-min_x,2])
+def predict_graph(data,w,b):
+    j= []
     for d in data:
-        j = np.append(j,[d[0],abs(w*d[0]+b - d[1])])
+        j.append([d[0],w*d[0]+b])
     return j
 
 
@@ -60,10 +60,11 @@ data = np.random.randint(0,30,[20,2])
 min_x, min_y, max_x, max_y = range_w_b(data)
 # print(type(min_x))
 min_j,per_w,per_b = min_j(data , min_x, min_y, max_x, max_y)
-error_plt = fun_j(data,per_w,per_b)
-print(error_plt)
+predict_plt = predict_graph(data,per_w,per_b)
+# print(data)
+predict_plt = np.array(predict_plt)
+print(predict_plt)
 import matplotlib.pyplot as plt
 plt.scatter(data[:,0],data[:,1])
-plt.plot()
-
+plt.plot(predict_plt[:,0],predict_plt[:,1])
 plt.show()
