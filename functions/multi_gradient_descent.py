@@ -53,7 +53,7 @@ def gradient_descent(x_data,y_data,w,b):
 def predict_graph(x_data,w,b):
     # pred = np.zeros([x_data.shape[0],])
     pred = np.zeros([x_data.shape[0]])
-    for i in range(test_size):
+    for i in range(x_data.shape[0]):
         pred[i] = np.dot(x_data[i],w) +b
     return pred
 
@@ -61,7 +61,7 @@ def show_predictions(x_test,y_test,per_w,per_b):
     print(per_w,per_b)
     pred = predict_graph(x_test,per_w,per_b)
     print(" Limit","Rating","Cards","Age","Education")
-    for i in range(test_size):
+    for i in range(x_test.shape[0]):
         print(x_test[i],"       ",round(pred[i],3),y_test[i]) 
 
 
