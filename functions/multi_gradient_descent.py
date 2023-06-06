@@ -55,7 +55,10 @@ def predict_graph(x_data,w,b):
     pred = np.zeros([x_data.shape[0]])
     for i in range(x_data.shape[0]):
         pred[i] = np.dot(x_data[i],w) +b
+    # pred = np.sort(pred,key=lambda x : x[0])
+    # pred = pred[pred[:,0]]
     return pred
+
 
 def show_predictions(x_test,y_test,per_w,per_b):
     print(per_w,per_b)
