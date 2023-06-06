@@ -71,10 +71,13 @@ def show_predictions(x_test,y_test,per_w,per_b):
 
 def accuracy(x_test,y_test,w,b,):
     pred = predict_graph(x_test,w,b)
-    t =np.sum(y_test)
-    k = np.sum(pred)
-    error = abs(k-t)/t 
+    error = 0
+    for i in range(pred.shape[0]):
+        error += abs(y_test[i] - pred[i])/y_test[i]
+
+    # t =np.sum(y_test)
+    # k = np.sum(pred)
+    error /= y_test.shape[0]  
     error *= 100
     return error
-
 
