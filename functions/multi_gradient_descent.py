@@ -73,11 +73,27 @@ def accuracy(x_test,y_test,w,b,):
     pred = predict_graph(x_test,w,b)
     error = 0
     for i in range(pred.shape[0]):
-        error += abs(y_test[i] - pred[i])/y_test[i]
+        error += abs(y_test[i] - pred[i]/y_test[i])
 
     # t =np.sum(y_test)
     # k = np.sum(pred)
     error /= y_test.shape[0]  
     error *= 100
     return error
+
+
+def feature_scaling(data):
+    if len(data.shape) >1:
+        k = np.zeros(data.shape[1])
+        # for r in range(data.shape[0]):
+        for c in range(data.shape[1]):
+            k[c] = np.sum(data[:,c])
+        k = k/data.shape[0]
+        for c in range(data.shape[1]):
+            f = np.max(data[:,c]) - np.min(data[:,c])
+            data[:,c] -= k[c]
+            data[:,c] /= f
+        return data
+    else:
+        return (data-(np.sum(data)/data.shape[0]))/(np.max(data) - np.min(data))
 
