@@ -15,7 +15,7 @@ def min__j(x_data,y_data,w,b):
 def gradient(x_data,y_data, w, b):
     j_i = np.zeros(w.shape[0])
     j_j = 0
-    m = data.shape[0]
+    m = x_data.shape[0]
     for i in range(x_data.shape[0]):
         k = (np.dot(x_data[i],w)+b- (y_data[i]))
         for gb in range(w.shape[0]): 
