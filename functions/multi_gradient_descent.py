@@ -30,11 +30,11 @@ def gradient(x_data,y_data, w, b):
 
 
 
-def gradient_descent(x_data,y_data,w,b):
-    dist = 0.00000000006
+def gradient_descent(x_data,y_data,w,b,learning_rate,iterations):
+    dist = learning_rate
     hist =[]
     count =0
-    for i in range(50000):
+    for i in range(iterations):
         count +=1
         dj_dw,dj_db =  gradient(x_data,y_data,w,b)
 
